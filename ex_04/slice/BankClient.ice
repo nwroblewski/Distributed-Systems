@@ -1,5 +1,10 @@
 module BankClient{
 
+
+    enum AccountType { REGULAR, PREMIUM };
+
+    enum Currency { PLN, USD, EUR, AUD, CZK, DKK };
+    
     exception InvalidPeselException {
         string reason;
     };
@@ -12,20 +17,6 @@ module BankClient{
         string reason;
     };
     
-    enum AccountType {
-        REGULAR = 0,
-        PREMIUM = 1
-    };
-
-    enum Currency {
-        PLN = 0,
-        USD = 1,
-        EUR = 2,
-        AUD = 3,
-        CZK = 4,
-        DKK = 5
-    };
-
     struct Person {
         string name;
         string surname;
@@ -38,31 +29,34 @@ module BankClient{
         short year;
     };
 
-    struct Credit {
-        double cost;
+    struct Money {
         Currency currency;
+        double amount;
+    };
+
+    struct Credit {
+        Money cost;
         Date beginDate;
         Date endDate;
     };
 
     struct CreditInfo {
-        Currency localCurrency;
-        Currency creditCurrency;
-        double localCurrencyCost;
-        double creditCurrencyCost;
+        Money localCost;
+        Money creditCost;
     };
 
     interface Account {
         double getAccountBalance();
-        void depositMoney(double money);
+        void depositMoney(Money money);
     };
 
     interface PremiumAccount extends Account{
         CreditInfo takeCredit(Credit credit) throws UnsupportedCurrencyException, InvalidDateFormatException;
     };
 
+    //implementation of this class will return the key for account.
     interface AccountFactory {
-        Account* createAccount(Person person,double declaredIncome) throws InvalidPeselException;
+        Account* createAccount(Person person,Money declaredIncome) throws InvalidPeselException;
     };
 
 };

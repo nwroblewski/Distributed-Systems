@@ -63,7 +63,7 @@ public enum Currency implements java.io.Serializable
     {
         if(v == null)
         {
-            ostr.writeEnum(BankClient.Currency.PLN.value(), 5);
+            ostr.writeEnum(Currency.PLN.value(), 5);
         }
         else
         {

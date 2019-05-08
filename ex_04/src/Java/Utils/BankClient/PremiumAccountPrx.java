@@ -21,7 +21,7 @@ public interface PremiumAccountPrx extends AccountPrx
         throws InvalidDateFormatException,
                UnsupportedCurrencyException
     {
-        return takeCredit(credit, noExplicitContext);
+        return takeCredit(credit, com.zeroc.Ice.ObjectPrx.noExplicitContext);
     }
 
     default CreditInfo takeCredit(Credit credit, java.util.Map<String, String> context)
@@ -48,7 +48,7 @@ public interface PremiumAccountPrx extends AccountPrx
 
     default java.util.concurrent.CompletableFuture<CreditInfo> takeCreditAsync(Credit credit)
     {
-        return _iceI_takeCreditAsync(credit, noExplicitContext, false);
+        return _iceI_takeCreditAsync(credit, com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
     }
 
     default java.util.concurrent.CompletableFuture<CreditInfo> takeCreditAsync(Credit credit, java.util.Map<String, String> context)
@@ -91,7 +91,7 @@ public interface PremiumAccountPrx extends AccountPrx
      **/
     static PremiumAccountPrx checkedCast(com.zeroc.Ice.ObjectPrx obj)
     {
-        return _checkedCast(obj, ice_staticId(), PremiumAccountPrx.class, _PremiumAccountPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, ice_staticId(), PremiumAccountPrx.class, _PremiumAccountPrxI.class);
     }
 
     /**
@@ -103,7 +103,7 @@ public interface PremiumAccountPrx extends AccountPrx
      **/
     static PremiumAccountPrx checkedCast(com.zeroc.Ice.ObjectPrx obj, java.util.Map<String, String> context)
     {
-        return _checkedCast(obj, context, ice_staticId(), PremiumAccountPrx.class, _PremiumAccountPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, context, ice_staticId(), PremiumAccountPrx.class, _PremiumAccountPrxI.class);
     }
 
     /**
@@ -115,7 +115,7 @@ public interface PremiumAccountPrx extends AccountPrx
      **/
     static PremiumAccountPrx checkedCast(com.zeroc.Ice.ObjectPrx obj, String facet)
     {
-        return _checkedCast(obj, facet, ice_staticId(), PremiumAccountPrx.class, _PremiumAccountPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, facet, ice_staticId(), PremiumAccountPrx.class, _PremiumAccountPrxI.class);
     }
 
     /**
@@ -128,7 +128,7 @@ public interface PremiumAccountPrx extends AccountPrx
      **/
     static PremiumAccountPrx checkedCast(com.zeroc.Ice.ObjectPrx obj, String facet, java.util.Map<String, String> context)
     {
-        return _checkedCast(obj, facet, context, ice_staticId(), PremiumAccountPrx.class, _PremiumAccountPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._checkedCast(obj, facet, context, ice_staticId(), PremiumAccountPrx.class, _PremiumAccountPrxI.class);
     }
 
     /**
@@ -138,7 +138,7 @@ public interface PremiumAccountPrx extends AccountPrx
      **/
     static PremiumAccountPrx uncheckedCast(com.zeroc.Ice.ObjectPrx obj)
     {
-        return _uncheckedCast(obj, PremiumAccountPrx.class, _PremiumAccountPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._uncheckedCast(obj, PremiumAccountPrx.class, _PremiumAccountPrxI.class);
     }
 
     /**
@@ -149,7 +149,7 @@ public interface PremiumAccountPrx extends AccountPrx
      **/
     static PremiumAccountPrx uncheckedCast(com.zeroc.Ice.ObjectPrx obj, String facet)
     {
-        return _uncheckedCast(obj, facet, PremiumAccountPrx.class, _PremiumAccountPrxI.class);
+        return com.zeroc.Ice.ObjectPrx._uncheckedCast(obj, facet, PremiumAccountPrx.class, _PremiumAccountPrxI.class);
     }
 
     /**

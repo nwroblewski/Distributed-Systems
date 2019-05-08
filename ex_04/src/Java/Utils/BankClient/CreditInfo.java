@@ -18,26 +18,20 @@ package Java.Utils.BankClient;
 public class CreditInfo implements java.lang.Cloneable,
                                    java.io.Serializable
 {
-    public Currency localCurrency;
+    public Money localCost;
 
-    public Currency creditCurrency;
-
-    public double localCurrencyCost;
-
-    public double creditCurrencyCost;
+    public Money creditCost;
 
     public CreditInfo()
     {
-        this.localCurrency = Currency.PLN;
-        this.creditCurrency = Currency.PLN;
+        this.localCost = new Money();
+        this.creditCost = new Money();
     }
 
-    public CreditInfo(Currency localCurrency, Currency creditCurrency, double localCurrencyCost, double creditCurrencyCost)
+    public CreditInfo(Money localCost, Money creditCost)
     {
-        this.localCurrency = localCurrency;
-        this.creditCurrency = creditCurrency;
-        this.localCurrencyCost = localCurrencyCost;
-        this.creditCurrencyCost = creditCurrencyCost;
+        this.localCost = localCost;
+        this.creditCost = creditCost;
     }
 
     public boolean equals(java.lang.Object rhs)
@@ -54,27 +48,19 @@ public class CreditInfo implements java.lang.Cloneable,
 
         if(r != null)
         {
-            if(this.localCurrency != r.localCurrency)
+            if(this.localCost != r.localCost)
             {
-                if(this.localCurrency == null || r.localCurrency == null || !this.localCurrency.equals(r.localCurrency))
+                if(this.localCost == null || r.localCost == null || !this.localCost.equals(r.localCost))
                 {
                     return false;
                 }
             }
-            if(this.creditCurrency != r.creditCurrency)
+            if(this.creditCost != r.creditCost)
             {
-                if(this.creditCurrency == null || r.creditCurrency == null || !this.creditCurrency.equals(r.creditCurrency))
+                if(this.creditCost == null || r.creditCost == null || !this.creditCost.equals(r.creditCost))
                 {
                     return false;
                 }
-            }
-            if(this.localCurrencyCost != r.localCurrencyCost)
-            {
-                return false;
-            }
-            if(this.creditCurrencyCost != r.creditCurrencyCost)
-            {
-                return false;
             }
 
             return true;
@@ -87,10 +73,8 @@ public class CreditInfo implements java.lang.Cloneable,
     {
         int h_ = 5381;
         h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, "::BankClient::CreditInfo");
-        h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, localCurrency);
-        h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, creditCurrency);
-        h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, localCurrencyCost);
-        h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, creditCurrencyCost);
+        h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, localCost);
+        h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, creditCost);
         return h_;
     }
 
@@ -110,18 +94,14 @@ public class CreditInfo implements java.lang.Cloneable,
 
     public void ice_writeMembers(com.zeroc.Ice.OutputStream ostr)
     {
-        Currency.ice_write(ostr, this.localCurrency);
-        Currency.ice_write(ostr, this.creditCurrency);
-        ostr.writeDouble(this.localCurrencyCost);
-        ostr.writeDouble(this.creditCurrencyCost);
+        Money.ice_write(ostr, this.localCost);
+        Money.ice_write(ostr, this.creditCost);
     }
 
     public void ice_readMembers(com.zeroc.Ice.InputStream istr)
     {
-        this.localCurrency = Currency.ice_read(istr);
-        this.creditCurrency = Currency.ice_read(istr);
-        this.localCurrencyCost = istr.readDouble();
-        this.creditCurrencyCost = istr.readDouble();
+        this.localCost = Money.ice_read(istr);
+        this.creditCost = Money.ice_read(istr);
     }
 
     static public void ice_write(com.zeroc.Ice.OutputStream ostr, CreditInfo v)
@@ -177,5 +157,5 @@ public class CreditInfo implements java.lang.Cloneable,
     private static final CreditInfo _nullMarshalValue = new CreditInfo();
 
     /** @hidden */
-    public static final long serialVersionUID = -2034402248885081161L;
+    public static final long serialVersionUID = 2876632936960995767L;
 }

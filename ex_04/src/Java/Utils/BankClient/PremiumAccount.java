@@ -57,7 +57,7 @@ public interface PremiumAccount extends Account
     static java.util.concurrent.CompletionStage<com.zeroc.Ice.OutputStream> _iceD_takeCredit(PremiumAccount obj, final com.zeroc.IceInternal.Incoming inS, com.zeroc.Ice.Current current)
         throws com.zeroc.Ice.UserException
     {
-        _iceCheckMode(null, current.mode);
+        com.zeroc.Ice.Object._iceCheckMode(null, current.mode);
         com.zeroc.Ice.InputStream istr = inS.startReadParams();
         Credit iceP_credit;
         iceP_credit = Credit.ice_read(istr);
@@ -96,27 +96,27 @@ public interface PremiumAccount extends Account
         {
             case 0:
             {
-                return _iceD_depositMoney(this, in, current);
+                return Account._iceD_depositMoney(this, in, current);
             }
             case 1:
             {
-                return _iceD_getAccountBalance(this, in, current);
+                return Account._iceD_getAccountBalance(this, in, current);
             }
             case 2:
             {
-                return _iceD_ice_id(this, in, current);
+                return com.zeroc.Ice.Object._iceD_ice_id(this, in, current);
             }
             case 3:
             {
-                return _iceD_ice_ids(this, in, current);
+                return com.zeroc.Ice.Object._iceD_ice_ids(this, in, current);
             }
             case 4:
             {
-                return _iceD_ice_isA(this, in, current);
+                return com.zeroc.Ice.Object._iceD_ice_isA(this, in, current);
             }
             case 5:
             {
-                return _iceD_ice_ping(this, in, current);
+                return com.zeroc.Ice.Object._iceD_ice_ping(this, in, current);
             }
             case 6:
             {

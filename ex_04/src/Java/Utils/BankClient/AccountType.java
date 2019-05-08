@@ -51,7 +51,7 @@ public enum AccountType implements java.io.Serializable
     {
         if(v == null)
         {
-            ostr.writeEnum(BankClient.AccountType.REGULAR.value(), 1);
+            ostr.writeEnum(AccountType.REGULAR.value(), 1);
         }
         else
         {

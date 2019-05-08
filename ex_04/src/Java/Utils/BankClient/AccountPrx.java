@@ -54,22 +54,22 @@ public interface AccountPrx extends com.zeroc.Ice.ObjectPrx
         return f;
     }
 
-    default void depositMoney(double money)
+    default void depositMoney(Money money)
     {
         depositMoney(money, com.zeroc.Ice.ObjectPrx.noExplicitContext);
     }
 
-    default void depositMoney(double money, java.util.Map<String, String> context)
+    default void depositMoney(Money money, java.util.Map<String, String> context)
     {
         _iceI_depositMoneyAsync(money, context, true).waitForResponse();
     }
 
-    default java.util.concurrent.CompletableFuture<Void> depositMoneyAsync(double money)
+    default java.util.concurrent.CompletableFuture<Void> depositMoneyAsync(Money money)
     {
         return _iceI_depositMoneyAsync(money, com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
     }
 
-    default java.util.concurrent.CompletableFuture<Void> depositMoneyAsync(double money, java.util.Map<String, String> context)
+    default java.util.concurrent.CompletableFuture<Void> depositMoneyAsync(Money money, java.util.Map<String, String> context)
     {
         return _iceI_depositMoneyAsync(money, context, false);
     }
@@ -81,11 +81,11 @@ public interface AccountPrx extends com.zeroc.Ice.ObjectPrx
      * @param sync -
      * @return -
      **/
-    default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_depositMoneyAsync(double iceP_money, java.util.Map<String, String> context, boolean sync)
+    default com.zeroc.IceInternal.OutgoingAsync<Void> _iceI_depositMoneyAsync(Money iceP_money, java.util.Map<String, String> context, boolean sync)
     {
         com.zeroc.IceInternal.OutgoingAsync<Void> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "depositMoney", null, sync, null);
         f.invoke(false, context, null, ostr -> {
-                     ostr.writeDouble(iceP_money);
+                     Money.ice_write(ostr, iceP_money);
                  }, null);
         return f;
     }

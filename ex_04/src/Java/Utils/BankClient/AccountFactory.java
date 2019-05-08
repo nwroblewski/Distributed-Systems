@@ -17,7 +17,7 @@ package Java.Utils.BankClient;
 
 public interface AccountFactory extends com.zeroc.Ice.Object
 {
-    AccountPrx createAccount(Person person, double declaredIncome, com.zeroc.Ice.Current current)
+    AccountPrx createAccount(Person person, Money declaredIncome, com.zeroc.Ice.Current current)
         throws InvalidPeselException;
 
     /** @hidden */
@@ -58,9 +58,9 @@ public interface AccountFactory extends com.zeroc.Ice.Object
         com.zeroc.Ice.Object._iceCheckMode(null, current.mode);
         com.zeroc.Ice.InputStream istr = inS.startReadParams();
         Person iceP_person;
-        double iceP_declaredIncome;
+        Money iceP_declaredIncome;
         iceP_person = Person.ice_read(istr);
-        iceP_declaredIncome = istr.readDouble();
+        iceP_declaredIncome = Money.ice_read(istr);
         inS.endReadParams();
         AccountPrx ret = obj.createAccount(iceP_person, iceP_declaredIncome, current);
         com.zeroc.Ice.OutputStream ostr = inS.startWriteParams();

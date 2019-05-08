@@ -4,16 +4,19 @@ import Java.Utils.BankClient.*;
 import Java.Utils.Logger;
 import com.zeroc.Ice.Current;
 
+import java.util.regex.Pattern;
+
 public class AccountImpl implements Account{
 
 
     private final Logger logger = new Logger(AccountImpl.class.getName());
 
     private Person person;
-    private double income;
+    private Money income;
     private double balance;
+    private String password;
 
-    public AccountImpl(Person person, double income){
+    public AccountImpl(Person person, Money income){
         this.person = person;
         this.income = income;
     }
@@ -25,8 +28,9 @@ public class AccountImpl implements Account{
     }
 
     @Override
-    public void depositMoney(double money, Current current) {
+    public void depositMoney(Money money, Current current){
         logger.log("Person with pesel " + person.pesel + " deposited" + money);
-        this.balance += money;
+        //TODO CURRENCY EXCHANGE HERE WHEN MAKING DEPOSIT
+        this.balance += money.amount;
     }
 }

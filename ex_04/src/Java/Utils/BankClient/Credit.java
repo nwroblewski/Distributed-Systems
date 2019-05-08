@@ -18,9 +18,7 @@ package Java.Utils.BankClient;
 public class Credit implements java.lang.Cloneable,
                                java.io.Serializable
 {
-    public double cost;
-
-    public Currency currency;
+    public Money cost;
 
     public Date beginDate;
 
@@ -28,15 +26,14 @@ public class Credit implements java.lang.Cloneable,
 
     public Credit()
     {
-        this.currency = Currency.PLN;
+        this.cost = new Money();
         this.beginDate = new Date();
         this.endDate = new Date();
     }
 
-    public Credit(double cost, Currency currency, Date beginDate, Date endDate)
+    public Credit(Money cost, Date beginDate, Date endDate)
     {
         this.cost = cost;
-        this.currency = currency;
         this.beginDate = beginDate;
         this.endDate = endDate;
     }
@@ -57,11 +54,7 @@ public class Credit implements java.lang.Cloneable,
         {
             if(this.cost != r.cost)
             {
-                return false;
-            }
-            if(this.currency != r.currency)
-            {
-                if(this.currency == null || r.currency == null || !this.currency.equals(r.currency))
+                if(this.cost == null || r.cost == null || !this.cost.equals(r.cost))
                 {
                     return false;
                 }
@@ -92,7 +85,6 @@ public class Credit implements java.lang.Cloneable,
         int h_ = 5381;
         h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, "::BankClient::Credit");
         h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, cost);
-        h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, currency);
         h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, beginDate);
         h_ = com.zeroc.IceInternal.HashUtil.hashAdd(h_, endDate);
         return h_;
@@ -114,16 +106,14 @@ public class Credit implements java.lang.Cloneable,
 
     public void ice_writeMembers(com.zeroc.Ice.OutputStream ostr)
     {
-        ostr.writeDouble(this.cost);
-        Currency.ice_write(ostr, this.currency);
+        Money.ice_write(ostr, this.cost);
         Date.ice_write(ostr, this.beginDate);
         Date.ice_write(ostr, this.endDate);
     }
 
     public void ice_readMembers(com.zeroc.Ice.InputStream istr)
     {
-        this.cost = istr.readDouble();
-        this.currency = Currency.ice_read(istr);
+        this.cost = Money.ice_read(istr);
         this.beginDate = Date.ice_read(istr);
         this.endDate = Date.ice_read(istr);
     }
@@ -181,5 +171,5 @@ public class Credit implements java.lang.Cloneable,
     private static final Credit _nullMarshalValue = new Credit();
 
     /** @hidden */
-    public static final long serialVersionUID = -5610732269153164643L;
+    public static final long serialVersionUID = 88011010139481533L;
 }

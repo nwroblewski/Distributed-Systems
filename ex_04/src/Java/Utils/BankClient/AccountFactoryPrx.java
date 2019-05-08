@@ -17,13 +17,13 @@ package Java.Utils.BankClient;
 
 public interface AccountFactoryPrx extends com.zeroc.Ice.ObjectPrx
 {
-    default AccountPrx createAccount(Person person, double declaredIncome)
+    default AccountPrx createAccount(Person person, Money declaredIncome)
         throws InvalidPeselException
     {
         return createAccount(person, declaredIncome, com.zeroc.Ice.ObjectPrx.noExplicitContext);
     }
 
-    default AccountPrx createAccount(Person person, double declaredIncome, java.util.Map<String, String> context)
+    default AccountPrx createAccount(Person person, Money declaredIncome, java.util.Map<String, String> context)
         throws InvalidPeselException
     {
         try
@@ -40,12 +40,12 @@ public interface AccountFactoryPrx extends com.zeroc.Ice.ObjectPrx
         }
     }
 
-    default java.util.concurrent.CompletableFuture<AccountPrx> createAccountAsync(Person person, double declaredIncome)
+    default java.util.concurrent.CompletableFuture<AccountPrx> createAccountAsync(Person person, Money declaredIncome)
     {
         return _iceI_createAccountAsync(person, declaredIncome, com.zeroc.Ice.ObjectPrx.noExplicitContext, false);
     }
 
-    default java.util.concurrent.CompletableFuture<AccountPrx> createAccountAsync(Person person, double declaredIncome, java.util.Map<String, String> context)
+    default java.util.concurrent.CompletableFuture<AccountPrx> createAccountAsync(Person person, Money declaredIncome, java.util.Map<String, String> context)
     {
         return _iceI_createAccountAsync(person, declaredIncome, context, false);
     }
@@ -58,12 +58,12 @@ public interface AccountFactoryPrx extends com.zeroc.Ice.ObjectPrx
      * @param sync -
      * @return -
      **/
-    default com.zeroc.IceInternal.OutgoingAsync<AccountPrx> _iceI_createAccountAsync(Person iceP_person, double iceP_declaredIncome, java.util.Map<String, String> context, boolean sync)
+    default com.zeroc.IceInternal.OutgoingAsync<AccountPrx> _iceI_createAccountAsync(Person iceP_person, Money iceP_declaredIncome, java.util.Map<String, String> context, boolean sync)
     {
         com.zeroc.IceInternal.OutgoingAsync<AccountPrx> f = new com.zeroc.IceInternal.OutgoingAsync<>(this, "createAccount", null, sync, _iceE_createAccount);
         f.invoke(true, context, null, ostr -> {
                      Person.ice_write(ostr, iceP_person);
-                     ostr.writeDouble(iceP_declaredIncome);
+                     Money.ice_write(ostr, iceP_declaredIncome);
                  }, istr -> {
                      AccountPrx ret;
                      ret = AccountPrx.uncheckedCast(istr.readProxy());

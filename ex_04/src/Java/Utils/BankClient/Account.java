@@ -19,7 +19,7 @@ public interface Account extends com.zeroc.Ice.Object
 {
     double getAccountBalance(com.zeroc.Ice.Current current);
 
-    void depositMoney(double money, com.zeroc.Ice.Current current);
+    void depositMoney(Money money, com.zeroc.Ice.Current current);
 
     /** @hidden */
     static final String[] _iceIds =
@@ -74,8 +74,8 @@ public interface Account extends com.zeroc.Ice.Object
     {
         com.zeroc.Ice.Object._iceCheckMode(null, current.mode);
         com.zeroc.Ice.InputStream istr = inS.startReadParams();
-        double iceP_money;
-        iceP_money = istr.readDouble();
+        Money iceP_money;
+        iceP_money = Money.ice_read(istr);
         inS.endReadParams();
         obj.depositMoney(iceP_money, current);
         return inS.setResult(inS.writeEmptyParams());
